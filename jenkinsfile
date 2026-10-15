@@ -4,13 +4,22 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'GitHub repository checked out by Jenkins.'
+                echo 'Repository fetched successfully.'
             }
         }
 
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t my-website-image .'
+            }
+        }
+
+        stage('Deploy Website') {
+            steps {
+                sh '''
+                    docker rm -f my-website || true
+                    docker run -d --name my-website -p 8080:80 my-website-image
+                '''
             }
         }
     }
