@@ -1,0 +1,17 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                echo 'Jenkins is ready to fetch my GitHub project!'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                echo 'Next, we will build the website Docker image.'
+            }
+        }
+    }
+}
