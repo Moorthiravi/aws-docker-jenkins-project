@@ -4,13 +4,13 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                echo 'Jenkins is ready to fetch my GitHub project!'
+                echo 'GitHub repository checked out by Jenkins.'
             }
         }
 
         stage('Build Docker Image') {
             steps {
-                echo 'Next, we will build the website Docker image.'
+                sh 'docker build -t my-website-image .'
             }
         }
     }
